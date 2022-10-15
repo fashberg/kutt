@@ -55,7 +55,7 @@ export const generateId = async (
 
 export const addProtocol = (url: string): string => {
   const hasProtocol = /^\w+:\/\//.test(url);
-  return hasProtocol ? url : `http://${url}`;
+  return hasProtocol ? url : `https://${url}`;
 };
 
 export const generateShortLink = (id: string, domain?: string): string => {
