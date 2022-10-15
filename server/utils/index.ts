@@ -45,7 +45,7 @@ export const generateId = async (
   isDefaultDomain: boolean = false
 ) => {
   const address = generate(
-    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890",
+    "abcdefghkmnpqrstuvwxyzABCDEFGHKLMNPQRSTUVWXYZ23456789",
     env.LINK_LENGTH
   );
   const link = await query.link.find({ address, domain_id }, isDefaultDomain);
