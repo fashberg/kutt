@@ -155,7 +155,7 @@ export const edit: Handler = async (req, res) => {
       ...(address && { address }),
       ...(description && { description }),
       ...(target && { target }),
-      ...(expire_in),
+      ...(expire_in && expire_in),
       ...(password && { password })
     }
   );
