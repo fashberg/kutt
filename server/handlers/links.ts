@@ -298,10 +298,10 @@ export const redirect = (app: ReturnType<typeof next>): Handler => async (
 
   // 5. Append query string when provided
   if (req.query) {
-    let url = URL.parse(link.target, true);
+    const url = URL.parse(link.target, true);
     const linkTargetParams = new URLSearchParams(url.search);
 
-    let added=0;
+    let added = 0;
     Object.entries(req.query).forEach(([key, value]) => {
       if (typeof value === "string") {
         added++;
@@ -309,8 +309,8 @@ export const redirect = (app: ReturnType<typeof next>): Handler => async (
       }
     });
 
-    if (added){
-      url.search=linkTargetParams.toString();
+    if (added) {
+      url.search = linkTargetParams.toString();
       link.target = URL.format(url);
     }
   }
