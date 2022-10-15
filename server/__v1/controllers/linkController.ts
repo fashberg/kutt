@@ -41,7 +41,7 @@ const dnsLookup = promisify(dns.lookup);
 
 const generateId = async () => {
   const address = generate(
-    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890",
+    "abcdefghkmnpqrstuvwxyzABCDEFGHKLMNPQRSTUVWXYZ23456789",
     env.LINK_LENGTH
   );
   const link = await findLink({ address });
@@ -133,7 +133,7 @@ export const goToLink: Handler = async (req, res, next) => {
   if (!link) {
     if (host !== env.DEFAULT_DOMAIN) {
       if (!domain || !domain.homepage) return next();
-      return res.redirect(301, domain.homepage);
+      return res.redirect(302, domain.homepage);
     }
     return next();
   }
@@ -274,7 +274,7 @@ export const customDomainRedirection: Handler = async (req, res, next) => {
   ) {
     const domain = await getDomain({ address: host });
     return res.redirect(
-      301,
+      302,
       (domain && domain.homepage) || `https://${env.DEFAULT_DOMAIN + path}`
     );
   }

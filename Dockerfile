@@ -15,10 +15,12 @@ COPY . .
 # Give permission to run script
 RUN chmod +x ./wait-for-it.sh
 
+RUN npx browserslist@latest --update-db
+
 # Build files
 RUN npm run build
 
 EXPOSE 3000
 
 # Running the app
-CMD [ "npm", "start" ]
+CMD [ "sh", "./start.sh" ]
