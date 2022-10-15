@@ -15,6 +15,8 @@ COPY . .
 # Give permission to run script
 RUN chmod +x ./wait-for-it.sh
 
+RUN npx browserslist@latest --update-db
+
 # Build files
 RUN npm run build
 
