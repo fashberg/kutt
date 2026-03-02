@@ -6,6 +6,7 @@ const domains = require("../handlers/domains.handler");
 const asyncHandler = require("../utils/asyncHandler");
 const locals = require("../handlers/locals.handler");
 const auth = require("../handlers/auth.handler");
+const env = require("../env");
 
 const router = Router();
 
@@ -23,6 +24,7 @@ router.get(
 router.post(
   "/",
   locals.viewTemplate("partials/settings/domain/add_form"),
+  auth.featureAccess([!env.DISALLOW_CUSTOMDOMAINS]),
   asyncHandler(auth.apikey),
   asyncHandler(auth.jwt),
   validators.addDomain,
@@ -44,6 +46,7 @@ router.post(
 router.delete(
   "/:id",
   locals.viewTemplate("partials/settings/domain/delete"),
+  auth.featureAccess([!env.DISALLOW_CUSTOMDOMAINS]),
   asyncHandler(auth.apikey),
   asyncHandler(auth.jwt),
   validators.removeDomain,

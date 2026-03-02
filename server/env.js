@@ -49,6 +49,7 @@ const env = cleanEnv(process.env, {
   REDIS_DB: num({ default: 0 }),
   DISALLOW_ANONYMOUS_LINKS: bool({ default: true }),
   DISALLOW_REGISTRATION: bool({ default: true }),
+  DISALLOW_CUSTOMDOMAINS: bool({ default: false }),
   SERVER_IP_ADDRESS: str({ default: "" }),
   SERVER_CNAME_ADDRESS: str({ default: "" }),
   CUSTOM_DOMAIN_USE_HTTPS: bool({ default: false }),

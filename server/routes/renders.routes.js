@@ -199,15 +199,17 @@ router.get(
 );
 
 router.get(
-  "/add-domain-form", 
+  "/add-domain-form",
   locals.noLayout,
+  auth.featureAccessPage([!env.DISALLOW_CUSTOMDOMAINS]),
   asyncHandler(auth.jwt),
   asyncHandler(renders.addDomainForm)
 );
 
 router.get(
-  "/confirm-domain-delete", 
+  "/confirm-domain-delete",
   locals.noLayout,
+  auth.featureAccessPage([!env.DISALLOW_CUSTOMDOMAINS]),
   locals.viewTemplate("partials/settings/domain/delete"),
   asyncHandler(auth.jwt),
   asyncHandler(renders.confirmDomainDelete)

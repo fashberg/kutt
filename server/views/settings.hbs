@@ -4,8 +4,10 @@
     Welcome, <span>{{user.email}}</span>.
   </h1>
   <hr />
+  {{#unless disallow_customdomains}}
   {{> settings/domain/index}}
   <hr />
+  {{/unless}}
   {{> settings/apikey}}
   <hr />
   {{> settings/change_password}}
